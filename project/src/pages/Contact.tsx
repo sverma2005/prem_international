@@ -77,7 +77,7 @@ const Contact = () => {
     data.append("message", formData.message);
     data.append("_captcha", "false");
 
-    const response = await fetch("https://formsubmit.co/preminternational07@gmail.com", {
+    const response = await fetch("https://formsubmit.co/456d06d948b4ec1fe3b0684353714ecb", {
       method: "POST",
       body: data,
     });
@@ -364,11 +364,19 @@ const Contact = () => {
               transition={{ duration: 0.5, delay: 0.9 }}
               className="bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl h-64 flex items-center justify-center border border-white/20 dark:border-gray-700/20"
             >
+              <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.474074244687!2d75.83653637539456!3d30.848688274588727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a835be773f4f9%3A0xd4578da7e5d3698a!2sKhanna%20Enclave!5e0!3m2!1sen!2sin!4v1721871820435!5m2!1sen!2sin"
+    width="100%"
+    height="300"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    className="w-full h-72 border-0"
+  ></iframe>
               <div className="text-center">
-                <MapPin className="text-blue-600 dark:text-blue-400 mx-auto mb-4" size={48} />
-                <p className="text-gray-600 dark:text-gray-400 font-medium">
-                  Interactive Map Coming Soon
-                </p>
+                
+                
               </div>
             </motion.div>
           </motion.div>
