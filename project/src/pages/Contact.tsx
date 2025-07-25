@@ -61,41 +61,41 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
+  e.preventDefault();
 
-    setIsSubmitting(true);
+  if (!validateForm()) {
+    return;
+  }
 
-    try {
-      // Simulate API call - replace with actual backend endpoint
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+  setIsSubmitting(true);
 
-      if (response.ok) {
-        setShowSuccess(true);
-        setFormData({ name: '', email: '', phone: '', message: '' });
-        setTimeout(() => setShowSuccess(false), 5000);
-      } else {
-        throw new Error('Failed to send message');
-      }
-    } catch (error) {
-      // For demo purposes, we'll simulate success
-      await new Promise(resolve => setTimeout(resolve, 2000));
+  try {
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("phone", formData.phone);
+    data.append("message", formData.message);
+    data.append("_captcha", "false");
+
+    const response = await fetch("https://formsubmit.co/preminternational07@gmail.com", {
+      method: "POST",
+      body: data,
+    });
+
+    if (response.ok) {
       setShowSuccess(true);
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      setFormData({ name: "", email: "", phone: "", message: "" });
       setTimeout(() => setShowSuccess(false), 5000);
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      throw new Error("Failed to send message");
     }
-  };
+  } catch (error) {
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   const contactInfo = [
     {
@@ -108,14 +108,14 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      value: '+91 161 234 5678',
+      value: '+91 83601 98383,70098-10989',
       href: 'tel:+911612345678',
       gradient: 'from-green-500 to-teal-500'
     },
     {
       icon: MapPin,
       title: 'Address',
-      value: 'Industrial Area, Phase-1, Ludhiana, Punjab',
+      value: 'Shop No. 14 Khanna Enclave Dhandra Road, Ludhiana, Punjab',
       href: '#',
       gradient: 'from-purple-500 to-pink-500'
     },
